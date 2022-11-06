@@ -34,12 +34,19 @@ Constraint loss can be done with Lagrangian multipliers
 
 **Python modules**
 - pytorch 1.9.0+cu111
+```bash
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
+pip3 install pytorch-lightning
+```
 - numpy
 - matplotlib
 - PyYAML
+```bash
+pip3 install numpy matplotlib pyyaml
+```
 
 **ROS installation**
-- ROS noetic
+- [ROS Noetic](http://wiki.ros.org/noetic/Installation)
 - hermesbot_collision_checker
 - hermesbot_navigation
 - hermesbot_simulation
@@ -49,7 +56,25 @@ Constraint loss can be done with Lagrangian multipliers
 - libpython-dev (for python binding)
 - python-dev (for python binding)
 - python3-tk (for visualization)
-
+- [nlohmann-json](https://json.nlohmann.me/home/releases/)
+```bash
+gir clone https://github.com/nlohmann/json.git
+cd json
+mkdir build
+cd build
+cmake ..
+make -j8
+sudo make install
+```
+- [SBPL](http://sbpl.net/node/54)
+```bash
+git clone https://github.com/sbpl/sbpl.git
+mkdir build
+cd build
+cmake ..
+make -j8
+sudo make install
+```
 # Installation
 
 ## Python module
@@ -66,6 +91,20 @@ python3.9 scripts/run_planner.py
 Load submodules
 ```bash
 git submodule update --init --recursive
+```
+There may be permissions problems. Then
+```bash
+git submodule update --force --recursive --init --remote 
+```
+
+Install [OMPL](https://ompl.kavrakilab.org/core/download.html)
+```bash
+git clone https://github.com/ompl/ompl.git
+```
+download [OMPL installation script](https://ompl.kavrakilab.org/core/install-ompl-ubuntu.sh)
+```bash
+chmod u+x install-ompl-ubuntu.sh
+./install-ompl-ubuntu.sh --python
 ```
 
 Build Bench mr
@@ -88,7 +127,9 @@ be created
 ## Running
 ### Benchmark
 
-To run planner with benchmark environment, run following command
+To run planner with benchmark environment, change the path to the robot shape in `2022-01-14_17-19-42_config.json`, line `77`.
+ 
+Then run following command
 ```bash
 export PYTHONPATH=$PYTHONPATH:build/benchmark
 python3.9 scripts/run_bench_mr.py test/test_benchmark/2022-01-14_17-19-42_config.json --show true
