@@ -58,7 +58,7 @@ pip3 install numpy matplotlib pyyaml
 - python3-tk (for visualization)
 - [nlohmann-json](https://json.nlohmann.me/home/releases/)
 ```bash
-gir clone https://github.com/nlohmann/json.git
+git clone https://github.com/nlohmann/json.git
 cd json
 mkdir build
 cd build
@@ -69,6 +69,7 @@ sudo make install
 - [SBPL](http://sbpl.net/node/54)
 ```bash
 git clone https://github.com/sbpl/sbpl.git
+cd sbpl
 mkdir build
 cd build
 cmake ..
@@ -79,11 +80,11 @@ sudo make install
 
 ## Python module
 ```bash
-sudo python3.9 setup.py install
+sudo python3 setup.py install
 ```
 To check installation run script
 ```bash
-python3.9 scripts/run_planner.py
+python3 scripts/run_planner.py
 ```
 
 ## Benchmark
